@@ -19,9 +19,9 @@ da nossa leitura de um artigo ou através de uma vídeo aula.</p>
 ├── src/
     ├── tests/
         ├── unit/
-            |--- description.txt
+            |--- description.md
             ├── xunit/
-                |--- description.txt
+                |--- description.md
                 |── example/ (podendo ter ou não)
 ```
 
