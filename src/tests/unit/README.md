@@ -116,8 +116,8 @@ void Add_MaximumSumResult_ThrowsOverflowException()
 <p>Ao escrever testes, evite concatenação de strings e operadores lógicos como, `if`, `while`, `for`, `switch` etc.</p>
 
 **Por que?**
-<p>Para não introduzirmos bugs dentro do testes e focar no resultado final ao invés da implementação.</p>
-Se a lógica for inevitável, considere quebrar seus testes em mais testes diferentes.
+<p>Para não introduzirmos bugs dentro do testes e focar no resultado final ao invés da implementação.<br>
+Se a lógica for inevitável, considere quebrar seus testes em mais testes diferentes.</p>
 
 | Fonte | Link |
 | ----- | ---- |
