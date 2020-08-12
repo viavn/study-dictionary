@@ -22,7 +22,8 @@ Não quer dizer que se você possuir uma grande cobertura de testes que seu cód
 
 - ***Dummies:*** Objetos que são passados mas nunca realmente são usados. Geralmente são utilizados para preencher lista de parâmetros.
 
-- ***Stubs:*** Provê respostas prontas para chamadas feitas durante o teste, ou seja, um objeto que você criará para testar seu código sem lidar com a dependência direta. <p> **Obs.:** Geralmente não são utilizados na hora do *assert*.</p>
+- ***Stubs:*** Provê respostas prontas para chamadas feitas durante o teste, ou seja, um objeto que você criará para testar seu código sem lidar com a dependência direta.
+  * **Obs.:** Geralmente não são utilizados na hora do *assert*.</p>
 
 - ***Spies:*** São *stubs* que também guardam informações das interações com outros métodos.
 
