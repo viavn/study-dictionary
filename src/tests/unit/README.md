@@ -29,36 +29,100 @@ Não quer dizer que se você possuir uma grande cobertura de testes que seu cód
 
 - ***Mocks:*** Objetos pré-programados com informações que formam uma especificação das chamadas que esperam receber.
 
+## :bulb: Melhores práticas
+
 ### :arrow_forward: Nomeando os testes
-- todo...
+**Por que?**
+<p>Padrões de nomenclatura são importantes para deixar explícitos a sua intenção com determinado teste.</p>
 
-### :arrow_forward: Arrumando (arranging) os testes
-- todo...
+- O nome de seu teste deverá conter estas 3 partes:
+  - Nome do método a ser testado;
+  - O cenário em que este está sendo testado;
+  - O comportamento esperado quando o cenário é chamado.
+  
+> Vamos lembrar que testes não apenas testam seu código, eles servem como documentação também.
 
-### :arrow_forward: Write minimally passing tests
-- todo...
+### Exemplo:
+**Ruim**
+```csharp
+[Fact]
+public void Test_Single()
+{
+    var stringCalculator = new StringCalculator();
 
-### :arrow_forward: Avoid magic strings
-- todo...
+    var actual = stringCalculator.Add("0");
 
-### :arrow_forward: Avoid logic in tests
-- todo...
+    Assert.Equal(0, actual);
+}
+```
+**Ideal**
+```csharp
+[Fact]
+public void Add_SingleNumber_ReturnsSameNumber()
+{
+    var stringCalculator = new StringCalculator();
 
-### :arrow_forward: Prefer helper methods to setup and teardown
-- todo...
+    var actual = stringCalculator.Add("0");
 
-### :arrow_forward: Avoid multiple asserts
-- todo...
+    Assert.Equal(0, actual);
+}
+```
 
-### :arrow_forward: Validate private methods by unit testing public methods
-- todo...
+### :arrow_forward: Arrumando (arranging) os testes - (Triple A)
+Um padrão comun ao desenvolver teste unitário consiste nas seguintes ações:
+- **Arrange:** Iniciamos e configuramos os objetos na medida que são necessários, como inicializando variáveis, criamos os *test doubles*;
+- **Act**: Esta etapa é onde rodamos de fato o nosso teste. Chamamos alguma função ou método que queremos por a prova.
+- **Assert**: É onde verificamos se a operação realizada na etapa anterior (*Act*) surtiu o resultado esperado. Assim sabemos se o teste passou ou falhou.
 
-### :arrow_forward: Stub static references
-- todo...
+### :arrow_forward: Escreva testes de aprovação mínima
+O parâmetro de entrada tem que ser o mais simples possível para que o comportamento seja o alvo no simples olhar de um outro desenvolvedor.
+E testes que possuem muitas informações obrigatórias, tem maior chance de introduzir erros ao testar e não deixam as coisas mais claras possíveis.
+
+### :arrow_forward: Evite strings mágicas
+Devemos prevenir a necessidade do leitor do teste ir até o código de fato só para que ele entenda o que essa variável representa.
+> Mostre o que você está tentando **provar** ao invés do que você está tentando **realizar**.
+
+### Exemplo:
+**Ruim**
+```csharp
+[Fact]
+public void Add_BigNumber_ThrowsException()
+{
+    var stringCalculator = new StringCalculator();
+
+    // O que é este "1001"???
+    Action actual = () => stringCalculator.Add("1001");
+
+    Assert.Throws<OverflowException>(actual);
+}
+```
+
+**Ideal**
+```csharp
+[Fact]
+void Add_MaximumSumResult_ThrowsOverflowException()
+{
+    var stringCalculator = new StringCalculator();
+    const string MAXIMUM_RESULT = "1001";
+
+    // Muito melhor, não?
+    Action actual = () => stringCalculator.Add(MAXIMUM_RESULT);
+
+    Assert.Throws<OverflowException>(actual);
+}
+```
+
+### :arrow_forward: Evite lógica nos seus testes
+<p>Ao escrever testes, evite concatenação de strings e operadores lógicos como, `if`, `while`, `for`, `switch` etc.</p>
+
+**Por que?**
+<p>Para não introduzirmos bugs dentro do testes e focar no resultado final ao invés da implementação.</p>
+Se a lógica for inevitável, considere quebrar seus testes em mais testes diferentes.
 
 | Fonte | Link |
 | ----- | ---- |
 | Microsoft (Responsabilidade)  | [Link](https://docs.microsoft.com/en-us/dotnet/core/testing/?pivots=xunit) |
 | Microsoft (Melhores Práticas) | [Link](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices) |
 | Martin Fowler (Mocks aren't stubs) | [Link](https://martinfowler.com/articles/mocksArentStubs.html) |
-| Medium - Training Center, escrito por Lucas Santos | [Link](https://medium.com/trainingcenter/testes-unit%C3%A1rios-mocks-stubs-spies-e-todas-essas-palavras-dif%C3%ADceis-f2765ac87cc8)
+| Medium - Training Center, por Lucas Santos | [Link](https://medium.com/trainingcenter/testes-unit%C3%A1rios-mocks-stubs-spies-e-todas-essas-palavras-dif%C3%ADceis-f2765ac87cc8)
+| Medium - Ship it, por Pablo Rodrigo Darde | [Link](https://medium.com/rd-shipit/test-doubles-mocks-stubs-fakes-spies-e-dummies-a5cdafcd0daf) |
