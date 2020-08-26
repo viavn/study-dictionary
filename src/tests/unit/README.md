@@ -126,3 +126,5 @@ Se a lógica for inevitável, considere quebrar seus testes em mais testes difer
 | Martin Fowler (Mocks aren't stubs) | [Link](https://martinfowler.com/articles/mocksArentStubs.html) |
 | Medium - Training Center, por Lucas Santos | [Link](https://medium.com/trainingcenter/testes-unit%C3%A1rios-mocks-stubs-spies-e-todas-essas-palavras-dif%C3%ADceis-f2765ac87cc8)
 | Medium - Ship it, por Pablo Rodrigo Darde | [Link](https://medium.com/rd-shipit/test-doubles-mocks-stubs-fakes-spies-e-dummies-a5cdafcd0daf) |
+| The Practical Test Pyramid, por Ham Vocke | [Link](https://martinfowler.com/articles/practical-test-pyramid.html) |
+
