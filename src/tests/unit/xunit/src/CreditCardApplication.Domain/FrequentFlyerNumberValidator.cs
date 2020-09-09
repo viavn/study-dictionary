@@ -2,6 +2,10 @@
 {
     public class FrequentFlyerNumberValidator : IFrequentFlyerNumberValidator
     {
+        public IServiceInformation ServiceInformation => throw new System.NotImplementedException();
+
+        // public string LicenseKey => throw new System.NotImplementedException("For demo purposes");
+
         public bool IsValid(string frequentFlyerNumber)
         {
             throw new System.NotImplementedException("Simulate this real dependency being hard to use");
