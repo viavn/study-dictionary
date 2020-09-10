@@ -15,5 +15,12 @@
         bool IsValid(string frequentFlyerNumber);
         void IsValid(string frequentFlyerNumber, out bool isValid);
         IServiceInformation ServiceInformation { get; }
+        ValidationMode ValidationMode { get; set; }
+    }
+
+    public enum ValidationMode
+    {
+        Quick,
+        Detailed
     }
 }

@@ -4,6 +4,12 @@
     {
         public IServiceInformation ServiceInformation => throw new System.NotImplementedException();
 
+        public ValidationMode ValidationMode
+        {
+            get => throw new System.NotImplementedException("For demo purposes");
+            set => throw new System.NotImplementedException("For demo purposes");
+        }
+
         // public string LicenseKey => throw new System.NotImplementedException("For demo purposes");
 
         public bool IsValid(string frequentFlyerNumber)
