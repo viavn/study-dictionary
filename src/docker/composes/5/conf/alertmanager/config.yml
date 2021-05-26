@@ -1,0 +1,10 @@
+route:
+  receiver: 'slack'
+
+receivers:
+  - name: 'slack'
+    slack_configs:
+       - send_resolved: true
+         username: 'vinicius'
+         channel: '#testing-docker'
+         api_url: 'https://hooks.slack.com/services/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'
